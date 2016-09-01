@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a</title>
+	
+</head>
+<body>
+	<p>this is a.html</p>
+	<script type="text/javascript">
+	/*	//y原始ajax方式
+	var ajax = function(){
+			var xhr;
+			if(window.XMLHttpRequest){
+				xhr = new XMLHttpRequest();
+			}else{
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xhr.open("GET","http://localhost:4000/data.html");
+			alert(xhr.readystate);
+			xhr.onreadystatechange = function(){
+				if(xhr.readystate==4&&xhr.status==200){
+					alert(xhr.responseText);
+				}
+			}
+			xhr.send();
+		}
+	ajax();*/
+	//jsonp
+	function handleResponse(response){
+	    console.log('The responsed data is: '+response.data);
+	}
+	var script = document.createElement('script');
+	script.src = 'http://localhost:4000/data.json?callback=handleResponse';
+	document.body.insertBefore(script, document.body.firstChild);
+	/*handleResonse({"data": "zhe"})*/
+	//原理如下：
+	//当我们通过script标签请求时
+	//后台就会根据相应的参数(json,handleResponse)
+	//来生成相应的json数据(handleResponse({"data": "zhe"}))
+	//最后这个返回的json数据(代码)就会被放在当前js文件中被执行
+	//至此跨域通信完成
+	</script>
+</body>
+</html>
