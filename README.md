@@ -15,8 +15,11 @@ jsonp，即json+padding
 ## DDEMO说明
 http://localhost:3000下的app.html请求http://localhost:4000下的data.json
 
-##DEMO使用方式
+## DEMO使用方式
 1 分别在a文件夹下和b文件夹下执行 npm install
-2 分别启动服务器 npm start 
+
+2 分别启动服务器 npm start
+
 3 a服务器端口号是3000，b服务器端口号为4000 
+
 4 访问localhost:3000/app.html
